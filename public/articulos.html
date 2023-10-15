@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./styles/prueba.css">
+  <link rel="stylesheet" href="./styles/nav.css">
+  <title>Almacén - Agregar</title>
+</head>
+<body>
+
+
+<div class="nav">
+  <div class="title"><h1>Almacen</h1></div>
+  <button><a href="lista.html">Articulos</a></button>
+</div>  
+    <div class="formulario">
+      <form id="formulario-agregar">
+        <h2>Agregar Nuevo Artículo</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required><br>
+    
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" required><br>
+    
+        <label for="ubicacion">Ubicación:</label>
+        <select id="ubicacion" required>
+          <option value="Bodega">Bodega</option>
+          <option value="Principal">Principal</option>
+          <option value="Merma">Merma</option>
+        </select><br>
+    <!-- ... (código anterior) ... -->
+
+<label for="precio1">Precio 1:</label>
+<input type="number" id="precio1" step="0.01" required><br>
+
+<label for="precio2">Precio 2:</label>
+<input type="number" id="precio2" step="0.01" required><br>
+
+<label for="precio3">Precio 3:</label>
+<input type="number" id="precio3" step="0.01" required><br>
+
+<button type="submit">Agregar</button>
+
+<!-- ... (resto del código) ... -->
+
+      </form>
+  
+      <form id="formulario-actualizar" style="display:none;">
+        <h2>Actualizar Artículo</h2>
+        <label for="nombreAct">Nombre:</label>
+        <input type="text" id="nombreAct" required><br>
+    
+        <label for="cantidadAct">Cantidad:</label>
+        <input type="number" id="cantidadAct" required><br>
+    
+        <label for="ubicacionAct">Ubicación:</label>
+        <select id="ubicacionAct" required>
+          <option value="Principal">Principal</option>
+          <option value="Bodega">Bodega</option>
+          <option value="Merma">Merma</option>
+        </select><br>
+    
+        <button id="actualizarBtn" type="submit">Actualizar</button>
+        <button id="cancelarBtn" type="button" style="display:none;">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    
+
+
+
+    function formatearNombre(nombre) {
+      return nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
+    }
+
+    let articuloIdActualizando;  // Variable para almacenar el ID del artículo que se está actualizando
+
+function mostrarFormularioActualizar(articulo) {
+  const formularioAgregar = document.getElementById('formulario-agregar');
+  const formularioActualizar = document.getElementById('formulario-actualizar');
+  const h2Actualizar = document.querySelector('#formulario-actualizar h2');
+
+  formularioAgregar.style.display = 'none';  // Ocultar formulario de agregar
+  formularioActualizar.style.display = 'block';
+  h2Actualizar.style.display = 'block';
+
+  const nombreInput = document.getElementById('nombreAct');
+  const cantidadInput = document.getElementById('cantidadAct');
+  const ubicacionInput = document.getElementById('ubicacionAct');
+
+  nombreInput.value = articulo.nombre;
+  cantidadInput.value = articulo.cantidad;
+  ubicacionInput.value = articulo.ubicacion;
+
+  const actualizarBtn = document.getElementById('actualizarBtn');
+  const cancelarBtn = document.getElementById('cancelarBtn');
+
+  cancelarBtn.style.display = 'inline-block';  // Mostrar botón "Cancelar"
+
+  // Almacenar el ID del artículo que se está actualizando
+  articuloIdActualizando = articulo.id;
+
+  cancelarBtn.addEventListener('click', () => {
+    formularioActualizar.style.display = 'none';
+    h2Actualizar.style.display = 'none';
+    formularioAgregar.style.display = 'block';  // Mostrar formulario de agregar nuevamente
+    cancelarBtn.style.display = 'none';  // Ocultar botón "Cancelar"
+    // Limpiar el ID del artículo que se está actualizando al cancelar
+    articuloIdActualizando = null;
+  });
+
+  actualizarBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    // Solo si hay un artículo en proceso de actualización
+    if (articuloIdActualizando) {
+      const nuevoNombre = nombreInput.value;
+      const nuevaCantidad = cantidadInput.value;
+      const nuevaUbicacion = ubicacionInput.value;
+
+      // Llamada para actualizar el artículo
+      await actualizarArticulo(articuloIdActualizando, nuevoNombre, nuevaCantidad, nuevaUbicacion);
+
+      // Ocultar formulario de actualizar y mostrar el de agregar
+      formularioActualizar.style.display = 'none';
+      h2Actualizar.style.display = 'none';
+      formularioAgregar.style.display = 'block';
+      cancelarBtn.style.display = 'none';  // Ocultar botón "Cancelar"
+      // Limpiar el ID del artículo que se está actualizando después de la actualización
+      articuloIdActualizando = null;
+    }
+  });
+}
+
+
+    async function actualizarArticulo(id, nombre, cantidad, ubicacion) {
+      const botonActualizar = document.getElementById('actualizarBtn');
+      botonActualizar.disabled = true;  // Deshabilitar el botón de actualizar
+
+      const response = await fetch(`http://localhost:3000/articulos/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ nombre, cantidad, ubicacion })
+      });
+
+      if (response.ok) {
+        obtenerArticulos();
+      } else {
+        alert('Error al actualizar el artículo');
+      }
+
+      botonActualizar.disabled = false;  // Habilitar el botón de actualizar nuevamente
+    }
+
+    async function eliminarArticulo(id) {
+      const response = await fetch(`http://localhost:3000/articulos/${id}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        alert('Artículo eliminado correctamente');
+        obtenerArticulos();
+      } else {
+        alert('Error al eliminar el artículo');
+      }
+    }
+    async function agregarArticulo(event) {
+  event.preventDefault();
+
+  const nombre = document.getElementById('nombre').value;
+  const cantidad = document.getElementById('cantidad').value;
+  const ubicacion = document.getElementById('ubicacion').value;
+  const precio1 = document.getElementById('precio1').value;
+  const precio2 = document.getElementById('precio2').value;
+  const precio3 = document.getElementById('precio3').value;
+
+  const response = await fetch('http://localhost:3000/articulos', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ nombre, cantidad, ubicacion, precio1, precio2, precio3 })
+  });
+
+  if (response.ok) {
+    alert('Artículo agregado correctamente');
+    document.getElementById('formulario-agregar').reset();
+  } else {
+    alert('Error al agregar el artículo');
+  }
+}
+
+    window.onload = () => {
+      document.getElementById('formulario-agregar').addEventListener('submit', agregarArticulo);
+    };
+  </script>
+</body>
+</html>

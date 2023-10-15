@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./styles/prueba.css">
+  <link rel="stylesheet" href="./styles/nav.css">
+  <title>Almacén - Lista de Artículos</title>
+</head>
+<body>
+  <div class="nav">
+    <div class="title">
+      <h1>Lista de articulos</h1>
+    </div>
+    <button><a href="./articulos.html">Agregar</a></button>
+
+    <div class="search">
+      <input type="text" id="busqueda" placeholder="Buscar..." oninput="buscarArticuloEnTiempoReal()">
+      <button onclick="buscarArticulo()"><img src="./assets/search.svg" alt=""></button>
+      <button onclick="generarPDF()"><img src="./assets/save.svg" class="pdf"></button>
+      
+    </div>
+  </div>
+
+
+  <div class="cuerp">
+    <div class="tabla">
+      <table id="articulos-lista">
+      </table>
+    </div>
+  </div>
+
+  <form id="formulario-actualizar" style="display:none;">
+    <h2>Actualizar Artículo</h2>
+    <label for="nombreAct">Nombre:</label>
+    <input type="text" id="nombreAct" required><br>
+
+    <label for="cantidadAct">Cantidad:</label>
+    <input type="number" id="cantidadAct" required><br>
+
+    <label for="ubicacionAct">Ubicación:</label>
+    <select id="ubicacionAct" required>
+      <option value="Principal">Principal</option>
+      <option value="Bodega">Bodega</option>
+      <option value="Merma">Merma</option>
+    </select><br>
+
+    <label for="precio1Act">Precio 1:</label>
+    <input type="number" id="precio1Act" required><br>
+
+    <label for="precio2Act">Precio 2:</label>
+    <input type="number" id="precio2Act" required><br>
+
+    <label for="precio3Act">Precio 3:</label>
+    <input type="number" id="precio3Act" required><br>
+
+    <button id="actualizarBtn" type="submit">Actualizar</button>
+    <button id="cancelarBtn" type="button" style="display:none;">Cancelar</button>
+  </form>
+
+
+  <script src="lista.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+
+a {
+    color: red;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgb(203, 25, 25);
+}
+
+/* Estilo para la tabla y celdas */
+#articulos-lista {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px; /* Ajusta según sea necesario */
+  }
+  
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: #333;
+    padding: 0;
+    margin: 0;
+  }
+
+.nav button a {
+    position: relative;
+    color:white;
+    text-decoration: none;
+}
+
+   
+   button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #eee;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  
+
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        border: 1px solid #ddd; /* Borde para simular una tabla */
+      }
+  
+      /* Estilo para los elementos de lista (li) */
+      li {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ddd; /* Borde entre filas */
+      }
+  
+      /* Estilo para el último elemento de la lista (li) */
+      li:last-child {
+        border-bottom: none; /* Eliminar borde en la última fila */
+      }
+
+      input, select {
+        text-align: center;
+        background-color: #f9f9f9;
+        height: 40px;
+        width: 30%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+
+      .formulario form {
+        margin-top: 0;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      
+      }
+      
+      #formulario-agregar,  #formulario-actualizar {
+        text-align: center;
+      }
+     
+      
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .tabla {
+        width: 80%;
+        margin: 0 auto;
+    
+      }
+
+      /* Estilo para las columnas */
+.columna {
+    display: inline-block;
+    width: 110px; /* Puedes ajustar el ancho según tus necesidades */
+    text-align: left;
+    margin-right: 5px; /* Espacio entre columnas */
+}
+
+
+    
+#formulario-actualizar  button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#formulario-actualizar button:hover {
+    background-color: #555;
+}
+
+#formulario-agregar  button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#formulario-agregar button:hover {
+    background-color: #555;
+}
+
+
+.pdf {
+    font-size: 30px;
+}

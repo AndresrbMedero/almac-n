@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/registro.css">
+  <title>Registro</title>
+</head>
+<body>
+  <div class="register-container container">
+    <h1>Registro</h1>
+    <form action="/register" method="POST">
+      <label for="newUsername" class="label-style">Ingrese Nombre:</label>
+      <input type="text" id="newUsername" name="username" class="input-style" required>
+      <label for="newPassword" class="label-style">Ingese Contraseña:</label>
+      <input type="password" id="newPassword" name="password" class="input-style" required>
+      <button type="submit" class="button-style">Registrarse</button>
+    </form>
+    <p class="login-link">¿Ya tienes una cuenta? <a href="/index.html" class="link-style">Inicia sesión aquí</a></p>
+  </div>
+</body>
+</html>

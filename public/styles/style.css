@@ -1,0 +1,164 @@
+
+
+
+.cuerp {
+  align-items: center ;
+  margin-top: 10px;
+}
+
+.nav button a {
+  position: relative;
+  color:white;
+  text-decoration: none;
+ }
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: #333;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+  .title {
+    text-align: center;
+  }
+  
+  
+  .tabla {
+    margin-left: 30px;
+    width: 80%;
+  }
+  
+  .tabla{
+    margin: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  
+  
+  .formulario form {
+    margin-top: 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  #formulario-agregar, #articulos-lista, #formulario-actualizar {
+    text-align: center;
+  }
+ 
+  ul{
+    list-style: none;
+  }
+
+  
+  input, select {
+    text-align: center;
+    background-color: #f9f9f9;
+    height: 40px;
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+
+  
+  #articulos-lista {
+    display: grid;
+  }
+
+  .articulo-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .articulo-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .articulo-item p {
+    margin-bottom: 10px;
+  }
+  
+  .articulo-item .acciones {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .articulo-item .acciones button {
+    margin-left: 10px;
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+  }
+  
+  .popup-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
